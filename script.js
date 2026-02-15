@@ -60,7 +60,7 @@ function getType(position) {
     }
   }
 
-  if (year.startsWith("2024") || year.startsWith("2025") ) {
+  if (year.startsWith("2024") || year.startsWith("2025") || year.startsWith("2026")) {
 
     if (situation == Situation.NotMarried) {
 
@@ -267,9 +267,11 @@ function calculation(position) {
 
     var irsDiscount = ( parseFloat(salaryWithTax) - part - parseFloat(partAditional) );
     if (irsDiscount < 0 ) irsDiscount = 0;
+    //console.log("irs: " + irsDiscount)
 
     var ssDiscont = parseFloat(salaryInput.value) * 0.11;
     var total = parseFloat(salaryInput.value) - (parseFloat(irsDiscount) + ssDiscont);
+    //console.log("ss: " + ssDiscont)
 
     salaryLabel.innerHTML = parseFloat(total).toFixed(2);
 
@@ -312,6 +314,7 @@ function loadCSV(year) {
 
 var csvJsons = {};
 
+loadCSV("2026");
 loadCSV("2025");
 loadCSV("2024_03");
 loadCSV("2024_02");
